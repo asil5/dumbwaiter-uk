@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Dumbwaiter Cost London 2026 | Transparent Pricing",
   description:
-    "Transparent dumbwaiter installation and repair prices in London. Residential from £4,500. Commercial from £7,000. Annual maintenance from £200.",
+    "Wondering about dumbwaiter cost London 2026? Transparent installation and repair prices: Residential from £4,500, Commercial from £7,000. Free site survey. Annual maintenance from £200.",
 }
 
 const tiers = [
@@ -70,10 +70,10 @@ export default function PricingPage() {
     <>
       <section className="bg-slate-900 text-white py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-4">Transparent Pricing</h1>
+          <h1 className="text-4xl font-bold mb-4">Dumbwaiter Cost London 2026</h1>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-            Most lift companies won't publish prices. We do. These ranges cover the majority of jobs — exact
-            quotes provided after a free site survey.
+            Most lift companies won't publish prices. We do. These dumbwaiter cost London ranges cover the
+            majority of jobs — exact quotes provided after a free site survey.
           </p>
         </div>
       </section>
