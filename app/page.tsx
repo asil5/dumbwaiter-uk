@@ -36,9 +36,32 @@ const reasons = [
   { title: "Smart Upgrades", desc: "IoT-enabled controls and monitoring for modern dumbwaiter systems." },
 ]
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Dumbwaiter UK",
+  description: "Expert dumbwaiter installation, repair and maintenance in London.",
+  url: "https://dumbwaiter.uk",
+  telephone: "02080586674",
+  email: "info@dumbwaiter.uk",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "London",
+    addressCountry: "GB",
+  },
+  areaServed: { "@type": "City", name: "London" },
+  priceRange: "££",
+  openingHours: "Mo-Sa 07:00-19:00",
+  sameAs: ["https://dumbwaiter.uk"],
+}
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-700 text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
