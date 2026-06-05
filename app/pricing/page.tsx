@@ -58,10 +58,21 @@ const tiers = [
 ]
 
 const extras = [
-  { item: "Annual Maintenance Contract", price: "From £200/year" },
-  { item: "LOLER Thorough Examination", price: "From £120" },
-  { item: "Emergency Callout", price: "From £150 + parts" },
-  { item: "Smart IoT Upgrade", price: "From £500" },
+  {
+    item: "Annual Maintenance Contract",
+    price: "£300 per visit",
+    note: "Quarterly maintenance visits are recommended to maximise reliability and reduce downtime.",
+  },
+  {
+    item: "LOLER Thorough Examination",
+    price: "From £600",
+    note: "Independent LOLER examination arranged through a certified competent person.",
+  },
+  { item: "Emergency Callout (Normal Hours)", price: "From £250" },
+  { item: "Emergency Callout (Out of Hours)", price: "From £80" },
+  { item: "Basic Monitoring", price: "From £500" },
+  { item: "Remote Monitoring", price: "From £750" },
+  { item: "Cloud Dashboard", price: "From £1,000" },
   { item: "Structural Works (if required)", price: "£1,000 – £3,000" },
 ]
 
@@ -130,13 +141,27 @@ export default function PricingPage() {
       <section className="py-12 px-4 bg-slate-50">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-8 text-center">Additional Services</h2>
-          <div className="bg-white rounded-xl border border-slate-200 divide-y divide-slate-100">
-            {extras.map((e) => (
-              <div key={e.item} className="flex justify-between items-center px-6 py-4">
-                <span className="text-slate-700">{e.item}</span>
-                <span className="font-semibold text-slate-900">{e.price}</span>
-              </div>
-            ))}
+          <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+            {/* Table header */}
+            <div className="hidden sm:flex justify-between items-center px-6 py-3 bg-slate-100 border-b border-slate-200">
+              <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">Service</span>
+              <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">Price</span>
+            </div>
+            <div className="divide-y divide-slate-100">
+              {extras.map((e) => (
+                <div key={e.item} className="px-6 py-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                    <div className="flex-1">
+                      <span className="text-slate-800 font-medium">{e.item}</span>
+                      {"note" in e && e.note && (
+                        <p className="text-xs text-slate-500 mt-1 max-w-md">{e.note}</p>
+                      )}
+                    </div>
+                    <span className="font-semibold text-slate-900 sm:ml-8 shrink-0">{e.price}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
