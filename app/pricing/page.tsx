@@ -68,8 +68,16 @@ const extras = [
     price: "From £600",
     note: "Independent LOLER examination arranged through a certified competent person.",
   },
-  { item: "Emergency Callout (Normal Hours)", price: "From £250" },
-  { item: "Emergency Callout (Out of Hours)", price: "From £80" },
+  {
+    item: "Emergency Callout",
+    price: "£350 + £80/hr",
+    note: "£350 callout fee, then £80 per hour thereafter. Parts charged separately.",
+  },
+  {
+    item: "Planned Repair",
+    price: "£320",
+    note: "Scheduled repair visit. Ideal for non-urgent faults. Parts charged separately.",
+  },
   { item: "Basic Monitoring", price: "From £500" },
   { item: "Remote Monitoring", price: "From £750" },
   { item: "Cloud Dashboard", price: "From £1,000" },
