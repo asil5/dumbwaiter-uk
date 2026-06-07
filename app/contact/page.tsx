@@ -1,32 +1,102 @@
 "use client"
-import { useState } from "react"
+import { useSearchParams } from "next/navigation"
+import { Suspense } from "react"
 import { site } from "../config"
 
+function ContactForm() {
+  const params = useSearchParams()
+  const sent = params.get("sent") === "1"
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-8">Send an Enquiry</h2>
+
+      {sent ? (
+        <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+          <p className="text-2xl mb-3">✅</p>
+          <p className="font-semibold text-green-900 text-lg mb-2">Message sent!</p>
+          <p className="text-green-700 text-sm">We&apos;ll get back to you within 4 hours.</p>
+        </div>
+      ) : (
+        <form
+          action="https://formsubmit.co/asiltokac2@gmail.com"
+          method="POST"
+          className="space-y-5"
+        >
+          <input type="hidden" name="_subject" value="New Enquiry — Dumbwaiter UK" />
+          <input type="hidden" name="_next" value="https://dumbwaiter.uk/contact?sent=1" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">Name *</label>
+              <input
+                type="text"
+                name="name"
+                required
+                className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">Phone *</label>
+              <input
+                type="tel"
+                name="phone"
+                required
+                className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+            <input
+              type="email"
+              name="email"
+              className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Service Required *</label>
+            <select
+              name="service"
+              required
+              className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            >
+              <option value="">Select a service…</option>
+              <option value="New Installation">New Installation</option>
+              <option value="Repair">Repair</option>
+              <option value="Maintenance / LOLER">Maintenance / LOLER</option>
+              <option value="Smart Upgrade">Smart Upgrade</option>
+              <option value="Other / Not Sure">Other / Not Sure</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Message</label>
+            <textarea
+              name="message"
+              rows={4}
+              placeholder="Tell us about your property, number of floors, any existing system…"
+              className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition-colors"
+          >
+            Send Enquiry
+          </button>
+        </form>
+      )}
+    </div>
+  )
+}
+
 export default function ContactPage() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setStatus("sending")
-    const form = e.currentTarget
-    const data = Object.fromEntries(new FormData(form)) as Record<string, string>
-
-    const msg = [
-      "New Enquiry - Dumbwaiter UK",
-      `Name: ${data.name}`,
-      `Phone: ${data.phone}`,
-      data.email ? `Email: ${data.email}` : null,
-      `Service: ${data.service}`,
-      data.message ? `Message: ${data.message}` : null,
-    ]
-      .filter(Boolean)
-      .join("\n")
-
-    window.open(`https://wa.me/${site.whatsapp.replace("+", "")}?text=${encodeURIComponent(msg)}`, "_blank")
-    setStatus("sent")
-    form.reset()
-  }
-
   return (
     <>
       <section className="bg-slate-900 text-white py-16 px-4">
@@ -72,7 +142,7 @@ export default function ContactPage() {
                   >
                     Message us on WhatsApp
                   </a>
-                  <p className="text-slate-500 text-sm mt-1">Quickest way for photos & quotes</p>
+                  <p className="text-slate-500 text-sm mt-1">Quickest way for photos &amp; quotes</p>
                 </div>
               </div>
 
@@ -117,87 +187,9 @@ export default function ContactPage() {
           </div>
 
           {/* Form */}
-          <div>
-            <h2 className="text-2xl font-bold mb-8">Send an Enquiry</h2>
-
-            {status === "sent" ? (
-              <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
-                <p className="text-2xl mb-3">✅</p>
-                <p className="font-semibold text-green-900 text-lg mb-2">Message sent!</p>
-                <p className="text-green-700 text-sm">We'll get back to you within 4 hours.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Name *</label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Phone *</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      required
-                      className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Service Required *</label>
-                  <select
-                    name="service"
-                    required
-                    className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-                  >
-                    <option value="">Select a service…</option>
-                    <option value="installation">New Installation</option>
-                    <option value="repair">Repair</option>
-                    <option value="maintenance">Maintenance / LOLER</option>
-                    <option value="smart">Smart Upgrade</option>
-                    <option value="other">Other / Not Sure</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    placeholder="Tell us about your property, number of floors, any existing system…"
-                    className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-                  />
-                </div>
-
-                {status === "error" && (
-                  <p className="text-red-600 text-sm">Something went wrong. Please call us directly.</p>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="w-full bg-blue-700 hover:bg-blue-800 disabled:bg-blue-400 text-white font-semibold py-3 rounded-lg transition-colors"
-                >
-                  {status === "sending" ? "Sending…" : "Send Enquiry"}
-                </button>
-              </form>
-            )}
-          </div>
+          <Suspense fallback={<div className="h-96" />}>
+            <ContactForm />
+          </Suspense>
         </div>
       </section>
     </>
