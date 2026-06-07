@@ -4,6 +4,7 @@ import "./globals.css"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import WhatsAppButton from "./components/WhatsAppButton"
+import BuildBadge from "./components/BuildBadge"
 
 const geist = Geist({ subsets: ["latin"] })
 
@@ -33,9 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
-        <div style={{position:"fixed",top:"4px",right:"4px",fontSize:"10px",background:"#000",color:"#aaa",padding:"2px 6px",borderRadius:"4px",zIndex:9999,fontFamily:"monospace"}}>
-          {process.env.NEXT_PUBLIC_BUILD}
-        </div>
+        <BuildBadge />
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-W224YC8E9D" />
         <script
