@@ -5,7 +5,14 @@ import { site } from "./config"
 export const metadata: Metadata = {
   title: "Dumbwaiter UK — London's Dumbwaiter Specialist",
   description:
-    "Expert dumbwaiter installation, repair and maintenance across London. Transparent pricing, fast response. Serving restaurants, hotels & homes.",
+    "London's commercial dumbwaiter specialist. Dumb waiter install, repair & maintenance for restaurants, hotels & homes. Transparent pricing, fast response.",
+  keywords: [
+    "dumbwaiter London",
+    "commercial dumbwaiter",
+    "dumb waiter London",
+    "dumbwaiter installation London",
+    "dumb waiter company London",
+  ],
 }
 
 const services = [
@@ -165,6 +172,9 @@ export default function HomePage() {
           <Link href="/contact" className="text-blue-700 font-semibold hover:underline">
             Check if we cover your area →
           </Link>
+          <p className="text-slate-400 text-sm mt-4">
+            Also known as a dumb waiter or service lift — we install, repair and maintain all types of small goods lifts across London.
+          </p>
         </div>
       </section>
     </>
