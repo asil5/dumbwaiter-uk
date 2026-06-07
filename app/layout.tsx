@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
-        <div style={{position:"fixed",bottom:"4px",left:"4px",fontSize:"10px",background:"#000",color:"#888",padding:"2px 6px",borderRadius:"4px",zIndex:9999,fontFamily:"monospace"}}>
+        <div style={{position:"fixed",bottom:"4px",right:"4px",fontSize:"10px",background:"#000",color:"#aaa",padding:"2px 6px",borderRadius:"4px",zIndex:9999,fontFamily:"monospace"}}>
           {process.env.NEXT_PUBLIC_BUILD || "dev"}
         </div>
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
