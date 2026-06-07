@@ -5,26 +5,26 @@ import { site } from "../config"
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setStatus("sending")
     const form = e.currentTarget
-    const data = Object.fromEntries(new FormData(form))
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
-      if (res.ok) {
-        setStatus("sent")
-        form.reset()
-      } else {
-        setStatus("error")
-      }
-    } catch {
-      setStatus("error")
-    }
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>
+
+    const msg = [
+      "New Enquiry - Dumbwaiter UK",
+      `Name: ${data.name}`,
+      `Phone: ${data.phone}`,
+      data.email ? `Email: ${data.email}` : null,
+      `Service: ${data.service}`,
+      data.message ? `Message: ${data.message}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n")
+
+    window.open(`https://wa.me/${site.whatsapp.replace("+", "")}?text=${encodeURIComponent(msg)}`, "_blank")
+    setStatus("sent")
+    form.reset()
   }
 
   return (
