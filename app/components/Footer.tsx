@@ -50,11 +50,9 @@ export default function Footer() {
 
       <div className="border-t border-slate-800 text-center py-4 text-xs text-slate-500 flex items-center justify-center gap-3">
         <span>© {new Date().getFullYear()} {site.company}. All rights reserved.</span>
-        {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA && (
-          <span className="font-mono opacity-40">
-            build {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA.slice(0, 7)}
-          </span>
-        )}
+        <span className="font-mono opacity-40">
+          build {process.env.NEXT_PUBLIC_BUILD}
+        </span>
       </div>
     </footer>
   )
