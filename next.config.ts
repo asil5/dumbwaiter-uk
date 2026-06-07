@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   env: {
-    NEXT_PUBLIC_BUILD: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? "local",
+    NEXT_PUBLIC_BUILD: new Date().toISOString().slice(0, 16).replace("T", " "),
   },
   async redirects() {
     return [
