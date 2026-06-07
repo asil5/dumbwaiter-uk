@@ -29,7 +29,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB" className={geist.className}>
-      <head>
+      <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <WhatsAppButton />
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-W224YC8E9D" strategy="afterInteractive" />
         <Script id="ga4" strategy="afterInteractive">{`
           window.dataLayer = window.dataLayer || [];
@@ -37,12 +41,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           gtag('js', new Date());
           gtag('config', 'G-W224YC8E9D');
         `}</Script>
-      </head>
-      <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppButton />
       </body>
     </html>
   )
