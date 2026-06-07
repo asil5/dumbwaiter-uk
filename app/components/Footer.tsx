@@ -50,8 +50,8 @@ export default function Footer() {
 
       <div className="border-t border-slate-800 text-center py-4 text-xs text-slate-500 flex items-center justify-center gap-3">
         <span>© {new Date().getFullYear()} {site.company}. All rights reserved.</span>
-        <span className="font-mono opacity-40">
-          build {process.env.NEXT_PUBLIC_BUILD}
+        <span className="font-mono text-slate-400">
+          [{process.env.NEXT_PUBLIC_BUILD ?? "dev"}]
         </span>
       </div>
     </footer>
