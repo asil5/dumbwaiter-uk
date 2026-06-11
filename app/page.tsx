@@ -43,32 +43,18 @@ const reasons = [
   { title: "Smart Upgrades", desc: "IoT-enabled controls and monitoring for modern dumbwaiter systems." },
 ]
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Dumbwaiter UK",
-  description: "Expert dumbwaiter installation, repair and maintenance in London.",
-  url: "https://dumbwaiter.uk",
-  telephone: "02080586674",
-  email: "info@dumbwaiter.uk",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "London",
-    addressCountry: "GB",
-  },
-  areaServed: { "@type": "City", name: "London" },
-  priceRange: "££",
-  openingHours: "Mo-Sa 07:00-19:00",
-  sameAs: ["https://dumbwaiter.uk"],
-}
+const locationAreas = [
+  { name: "Enfield", href: "/dumbwaiter-repair-enfield" },
+  { name: "North London", href: "/dumbwaiter-repair-north-london" },
+  { name: "Barnet", href: "/dumbwaiter-repair-barnet" },
+  { name: "Tottenham", href: "/dumbwaiter-repair-tottenham" },
+  { name: "Camden", href: "/dumbwaiter-repair-camden" },
+  { name: "Islington", href: "/dumbwaiter-repair-islington" },
+]
 
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       {/* Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-700 text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -162,17 +148,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Areas */}
+      {/* Areas We Cover */}
       <section className="py-16 px-4 bg-slate-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-4">Serving All of London</h2>
-          <p className="text-slate-500 mb-6">
-            We cover Central London, North, South, East and West London, and surrounding areas including Surrey, Kent, Essex, and Hertfordshire.
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-center mb-2">Areas We Cover</h2>
+          <p className="text-slate-500 text-center mb-8">
+            We cover all of London and surrounding counties. Click your area for local dumbwaiter services.
           </p>
-          <Link href="/contact" className="text-blue-700 font-semibold hover:underline">
-            Check if we cover your area →
-          </Link>
-          <p className="text-slate-400 text-sm mt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mb-8">
+            {locationAreas.map((area) => (
+              <Link
+                key={area.href}
+                href={area.href}
+                className="bg-white border border-slate-200 rounded-lg px-4 py-3 text-center text-sm font-medium text-slate-700 hover:border-blue-400 hover:text-blue-700 transition-colors"
+              >
+                {area.name}
+              </Link>
+            ))}
+          </div>
+          <p className="text-center text-slate-500 text-sm">
+            Also covering Haringey, Southgate, Hertfordshire, Essex, Surrey and Kent.{" "}
+            <Link href="/contact" className="text-blue-700 font-semibold hover:underline">
+              Check your area →
+            </Link>
+          </p>
+          <p className="text-slate-400 text-sm text-center mt-4">
             Also known as a dumb waiter or service lift — we install, repair and maintain all types of small goods lifts across London.
           </p>
         </div>

@@ -26,10 +26,54 @@ export const metadata: Metadata = {
   },
 }
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Dumbwaiter UK",
+  url: "https://dumbwaiter.uk",
+  telephone: "02080586674",
+  email: "info@dumbwaiter.uk",
+  description:
+    "Commercial dumbwaiter installation, repair and maintenance across London. LOLER compliant. Fast response.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "London",
+    addressCountry: "GB",
+  },
+  areaServed: [
+    "London", "Enfield", "Barnet", "Tottenham", "Camden",
+    "Islington", "Southgate", "Haringey", "Hertfordshire", "Essex",
+    "North London", "South London", "East London", "West London",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Dumbwaiter Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dumbwaiter Repair London" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dumbwaiter Installation London" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dumbwaiter Maintenance London" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "LOLER Inspection London" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Food Lift Repair London" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Service Lift Repair London" } },
+    ],
+  },
+  priceRange: "££",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "07:00",
+    closes: "19:00",
+  },
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB" className={geist.className}>
       <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
