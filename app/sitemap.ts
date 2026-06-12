@@ -13,8 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog/how-much-does-a-dumbwaiter-cost-in-london`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/blog/loler-inspection-guide-london`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/blog/signs-your-dumbwaiter-needs-repair`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/what-is-a-dumbwaiter`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Servis sayfaları (sadece mevcut olanlar)
     { url: `${base}/dumbwaiter-repair-london`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/restaurant-dumbwaiter-london`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/hotel-dumbwaiter-london`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/residential-dumbwaiter-london`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     // Lokasyon sayfaları (sadece mevcut olanlar)
     { url: `${base}/dumbwaiter-repair-enfield`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Diğer
