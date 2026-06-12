@@ -10,6 +10,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "what-is-a-dumbwaiter",
+    title: "What Is a Dumbwaiter? The Complete Guide",
+    excerpt:
+      "A plain-English explanation from a London dumbwaiter engineer — what they are, how they work, who needs one, and what to expect on cost.",
+    date: "13 June 2026",
+    readTime: "5 min read",
+    tag: "Guide",
+  },
+  {
     slug: "how-much-does-a-dumbwaiter-cost-in-london",
     title: "How Much Does a Dumbwaiter Cost in London?",
     excerpt:
@@ -17,6 +26,24 @@ const posts = [
     date: "5 June 2026",
     readTime: "6 min read",
     tag: "Pricing",
+  },
+  {
+    slug: "loler-inspection-guide-london",
+    title: "LOLER Inspection Guide for Dumbwaiters in London",
+    excerpt:
+      "What every London restaurant, hotel, and property owner needs to know about keeping their dumbwaiter legally compliant — frequency, costs, and certificates.",
+    date: "9 June 2026",
+    readTime: "7 min read",
+    tag: "Compliance",
+  },
+  {
+    slug: "signs-your-dumbwaiter-needs-repair",
+    title: "Signs Your Dumbwaiter Needs Repair",
+    excerpt:
+      "Unusual noises, slow movement, doors that won't close properly — here's how to spot the early warning signs before a small fault becomes an expensive breakdown.",
+    date: "9 June 2026",
+    readTime: "5 min read",
+    tag: "Repair",
   },
 ]
 
