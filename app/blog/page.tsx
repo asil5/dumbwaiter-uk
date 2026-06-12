@@ -10,6 +10,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "how-does-a-dumbwaiter-work",
+    title: "How Does a Dumbwaiter Work? Mechanism Explained",
+    excerpt:
+      "Motor, ropes, door interlocks, safety systems — a working London engineer breaks down the mechanics in plain English, with a real breakdown story from a Soho restaurant.",
+    date: "14 June 2026",
+    readTime: "6 min read",
+    tag: "Guide",
+  },
+  {
     slug: "what-is-a-dumbwaiter",
     title: "What Is a Dumbwaiter? The Complete Guide",
     excerpt:
